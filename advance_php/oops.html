@@ -1,0 +1,219 @@
+ 1.What Is Object Oriented Programming?
+ Ans:=>Object-oriented programming (OOP) is a fundamental programming paradigm used by nearly every developer at some point in their career. OOP is the most popular programming paradigm used for software development and is taught as the standard way to code for most of a programmer’s educational career. 
+ =>Another popular programming paradigm is functional programming, but we won’t get into that right now.
+ =>Today we will break down the basics of what makes a program object-oriented so that you can start to utilize this paradigm in your algorithms, projects, and interviews.
+ 
+ 2.What Are Properties Of Object Oriented Systems? 
+ Ans:=>[i]Inheritance: The main class or the root class is called as a Base Class. Any class which is expected to have ALL properties of the base class along with its own is called as a Derived class. The process of deriving such a class is Derived class. For the “Fruit” class, a Derived class can be “Class mango”.
+ [ii]Abstraction: Abstraction is creating models or classes of some broad concept. Abstraction can be achieved through Inheritance or even Composition.
+ [iii]Encapsulation: Encapsulation is a collection of functions of a class and object. The “Food” class is an encapsulated form. It is achieved by specifying which class can use which members (private, public, protected) of an object.
+ [iv]Polymorphism: Polymorphism means existing in different forms. Inheritance is an example of Polymorphism. A base class exists in different forms as derived classes. Operator overloading is an example of Polymorphism in which an operator can be applied in different situations.
+
+ 3.What Is Difference Between Class And Interface? 
+ Ans:=>The basic difference is that a class has both a definition and an implementation whereas an interface only has a definition. Interfaces are actually implemented via a class. 
+
+ 4.What Is Overloading? 
+ Ans:=>Overloading refers to the ability to use a single identifier to define multiple methods of a class that differ in their input and output parameters. Overloaded methods are generally used when they conceptually execute the same task but with a slightly different set of parameters.
+ =>Overloading is a concept used to avoid redundant code where the same method name is used multiple times but with a different set of parameters. The actual method that gets called during runtime is resolved at compile time, thus avoiding runtime errors. Overloading provides code clarity, eliminates complexity, and enhances runtime performance.
+
+ 5.What Is T_PAAMAYIM_NEKUDOTAYIM (Scope Resolution Operator (::) with Example.
+ Ans:The Scope Resolution Operator (also called Paamayim Nekudotayim) or in simpler terms, the double colon, is a token that allows access to static, constant, and overridden properties or methods of a class. 
+ When referencing these items from outside the class definition, use the name of the class.
+ examaple:A class constant, class property (static), and class function (static) can all share the same name and be accessed using the double-colon.
+
+ <?php
+ 
+ class A {
+ 
+     public static $B = '1'; # Static class variable.
+ 
+     const B = '2'; # Class constant.
+     
+     public static function B() { # Static class function.
+         return '3';
+     }
+     
+ }
+ 
+ echo A::$B . A::B . A::B(); # Outputs: 123
+ ?>
+
+ 6.What are the differences between abstract classes and interfaces?
+ Ans:An interface is a contract. It only contains method signatures (Without any method body). A Class which implements interface define their body. 2. A class can extend only one abstract class whereas a class can implement multiple interfaces.
+
+7.Define Constructor and Destructor? 
+Ans:You can say that the Constructors are the blueprints for object creation providing values for member functions and member variables. Once the object is initialized, the constructor is automatically called. Destructors are for destroying objects and automatically called at the end of execution.
+
+8.How to Load Classes in PHP? 
+Ans:
+Syntax:
+Function name(function ($class_name) {
+    include $class_name . '.php';
+  });
+Example:
+<?php
+    regi(function($className) {
+          $file = $className . '.php';
+          if (file_exists($file)) {
+             echo "$file included\n";
+             include $file;
+          } 
+          else {
+             throw new Exception("Unable to load $className.");
+          }
+    });
+    try {
+      $obj1 = new test1();
+      $obj2 = new test10();
+    } catch (Exception $e) {
+      echo $e->getMessage(), "\n";
+    }
+?>
+
+9.How to Call Parent Constructor? 
+Ans:We will face two cases while calling the parent constructor method in child class.
+Case1:
+We can't run directly the parent class constructor in child class if the child class defines a constructor. In order to run a parent constructor, a call to parent::__construct() within the child constructor is required.
+Example:<?php
+class Fruit{
+   public function __construct(){
+      echo "I am parent class"."
+";
+   }
+}
+class Mango extends Fruit{
+   public function __construct(){
+      parent::__construct();
+      echo "I am sub class";
+   }
+}
+$obj = new Mango();
+?>
+
+10:Are Parent Constructor Called Implicitly When Create An ObjectOf Class? 
+Ans:Parent constructors are not called implicitly if the child class defines a constructor. In order to run a parent constructor, a call to parent::__construct() within the child constructor is required.
+
+11.What Happen, If Constructor Is Defined As Private Or Protected? 
+Ans:The purpose of a private or protected constructor is to prevent the class from being instantiated from outside of the class. You could create a public static function in the class that returns a new object, but you cannot create it directly if you want to have the constructor be protected or private.
+
+12.What are PHP Magic Methods/Functions? List them Write program for Static
+Keyword in PHP?
+Ans:Magic methods in PHP are special methods that are aimed to perform certain tasks. These methods are named with double underscore (__) as prefix. All these function names are reserved and can't be used for any purpose other than associated magical functionality
+[i]__construct() method is invoked automatically when an object is created.
+[ii]__destruct() is called when the object is deleted.
+[iii]__toString()is invoked when an object of a class is treated as a string.
+[iV]__invoke()is invoked when an object is called as a function
+[v]__debugInfo()is called by var_dump() when dumping an object to get the properties that should be shown.
+=>program for static keyword:
+<?php
+class Fruit {
+    public static function aStaticMethod() {
+        // ...
+    }
+}
+
+Foo::aStaticMethod();
+$classname = 'Fruit';
+$classname::aStaticMethod();
+?>
+
+13.Create multiple Traits and use it in to a single class?
+Ans:Multiple Traits can be inserted into a class by listing them in the usestatement, separated by commas. 
+=>A Trait is intended to reduce some limitations of single inheritance by enabling a developer to reuse sets of methods freely in several independent classes living in different class hierarchies. 
+=><?php
+trait A {
+    public function smallTalk() {
+        echo 'a';
+    }
+    public function bigTalk() {
+        echo 'A';
+    }
+}
+
+trait B {
+    public function smallTalk() {
+        echo 'b';
+    }
+    public function bigTalk() {
+        echo 'B';
+    }
+}
+
+class Talker {
+    use A, B {
+        B::smallTalk insteadof A;
+        A::bigTalk insteadof B;
+    }
+}
+
+class Aliased_Talker {
+    use A, B {
+        B::smallTalk insteadof A;
+        A::bigTalk insteadof B;
+        B::bigTalk as talk;
+    }
+}
+?>
+
+14.Write PHP Script of Object Iteration?
+Ans:PHP provides a way for objects to be defined so it is possible to iterate through a list of items, with, for example a foreach statement. By default, all visible properties will be used for the iteration.
+<?php
+class MyClass
+{
+    public $var1 = 'value 1';
+    public $var2 = 'value 2';
+    public $var3 = 'value 3';
+
+    protected $protected = 'protected var';
+    private   $private   = 'private var';
+
+    function iterateVisible() {
+       echo "MyClass::iterateVisible:\n";
+       foreach ($this as $key => $value) {
+           print "$key => $value\n";
+       }
+    }
+}
+
+$class = new MyClass();
+
+foreach($class as $key => $value) {
+    print "$key => $value\n";
+}
+echo "\n";
+
+
+$class->iterateVisible();
+
+?>
+o/p=>
+var1 => value 1
+var2 => value 2
+var3 => value 3
+
+MyClass::iterateVisible:
+var1 => value 1
+var2 => value 2
+var3 => value 3
+protected => protected var
+private => private var
+
+15.Use of The $this keyword.
+Ans:$this is a reserved keyword in PHP that refers to the calling object. It is usually the object to which the method belongs, but possibly another object if the method is called statically from the context of a secondary object. This keyword is only applicable to internal methods.
+Example:
+
+<?php
+class simple{
+  
+    public $my = 12;
+  
+    public function display(){
+        return $this->my;
+    }
+}
+  
+$obj = new simple();
+echo $obj->display();
+  
+?>
+0/p->12

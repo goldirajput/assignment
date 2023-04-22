@@ -1,0 +1,40 @@
+.btn-diss{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 2px 2px 5px gray;
+    text-shadow: 2px 2px 5px gray;
+    background-color:#075892 !important;
+    margin: 10px 10px;
+}
+.btn-diss:hover{
+   color: white !important;
+    background-color:#0b304d !important ;
+}
+.df-main-update{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 400px;
+    height: 500px;
+    border-radius: 4px;
+    outline: none;
+    color: black;
+    box-shadow:0px 0px 80px 0px rgb(198, 196, 196) inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.df-update{
+        margin: 10px 0;
+        display: flex;
+        margin-top: 10px;
+}
+.container{
+    margin: 0 100px !important;
+}

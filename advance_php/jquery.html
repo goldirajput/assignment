@@ -1,0 +1,112 @@
+1.What is jQuery?
+Ans:jQuery is a JavaScript library.
+jQuery greatly simplifies JavaScript programming.
+jQuery is easy to learn.
+
+2.How are JavaScript and jQuery different?
+Ans:JavaScript is an interpreted programming language, intended for making network-driven applications. The JavaScript language is cross-platform, open, and extremely simple to use due to its integration with HTML.
+=>jQuery is a quick and compact JavaScript Library that makes HTML document traversing, event handling, animating, and Ajax associations for fast web improvement more comprehensible. It’s both feature-rich and cross-platform and is designed for a certain purpose, which is to take care of HTML client-side scripting. 
+
+3.Which is the starting point of code execution in jQuery?
+Ans:The jQuery starts its code execution from the $(document).ready() function which is executed whenever the whole HTML DOM is loaded and is totally rendered by the browser, so that the event handlers work correctly without any errors. This $(document).ready() function load the script only after the whole DOM is loaded by the browser.
+
+4.Document Load Vs Window. Load() jQuery.
+Ans:[i]document.ready is a jQuery event, it runs when the DOM is ready, e.g. all elements are there to be found/used, but not necessarily all content.
+$(document).ready(function() {
+    // executes when HTML-Document is loaded and DOM is ready
+    alert("document is ready");
+   });
+   
+[ii]window.onload fires later (or at the same time in the worst/failing cases) when images and such are loaded, so if you're using image dimensions for example, you often want to use this instead.
+$(window).load(function() {
+    // executes when complete page is fully loaded, including all frames, objects and images
+    alert("window is loaded");
+   });
+
+5.What is the difference between prop and attr?
+Ans:Both attr () and prop () are used to get or set the value of the specified property of an element attribute, but attr () returns the default value (Original state) of a property whereas prop () returns the current value (Current state).
+
+6.Explain Difference Between JQuery And JavaScript? 
+Ans:[i]javascript:JavaScript is extremely valuable while using forms. It has the ability to validate user input for errors and furthermore saves time. For instance, if the data is wrong, JavaScript checks for them prior to sending the information over to the server. 
+=>JavaScript gives more noteworthy control to the program as opposed to being totally dependent on the web servers. 
+Unlike other programming languages, JavaScript comes loaded with built-in functions to determine the date and time. Hence, it is very easy to code only by using methods like .getDate().
+=>JavaScript is an interpreted language, which means the script written inside javascript is processed line by line. These Scripts are interpreted by a JavaScript interpreter, a built-in component of the Web browser. 
+=>JavaScript has extremely helpful features to progressively create HTML content for the web.
+=>It permits us to add text, joins, pictures, tables, and so forth after an event occurrence (eg – mouse click, etc).
+
+[ii]jQuery:jQuery has a predefined method using which you can perform any task easily compared to JavaScript. Also, it is easy to learn. 
+jQuery has a predetermined CSS() method for manipulating the style for any Html elements.
+=>The jQuery made it easy to select DOM elements, traverse them and modify their content. 
+=>jQuery supports all modern web browsers including IE-6. and event handling like clicking the mouse button. 
+=>jQuery supports ajax, you can develop a responsive and feature-rich site using AJAX technology. 
+=>jQuery comes with built-in Animation. It has a predefined method “animate()” for creating custom animation on the web page.
+=>jQuery promotes brevity and clarity with features like chainable functions and shorthand function names.
+
+6.How We Can Select The Specified <li> Element From The ListOf <li> Elements In <ul>?
+Ans:document.querySelectorAll("ul > li");
+=>$('ul li').each(function(i)
+{
+   $(this).attr('rel'); // This is your rel value
+});
+
+7.In <table> Design Change The Color Of Even <tr> Elements To 
+   “green”And Change The Color Of Odd <tr> Elements To “blue” Color? Give 
+   An Example Code?
+=>i have two tables. <table id='1'></table> and <table id='2'></table>. When i put this code:
+$(document).ready(function()
+{
+  //for table row
+  $("tr:even").css("background-color", "green");
+  $("tr:odd").css("background-color", "blue");
+
+});
+
+8.How We Can Implement Animation Effects In Jquery? 
+=>$("button").click(function(){
+   $("div").animate({left: '500px'});
+ }); 
+
+9.Apply jQuery validation using library. 
+=>
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='registration']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      firstname: "required",
+      lastname: "required",
+      email: {
+        required: true,
+        // Specify that email should be validated
+        // by the built-in "email" rule
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    // Specify validation error messages
+    messages: {
+      firstname: "Please enter your firstname",
+      lastname: "Please enter your lastname",
+      password: {
+        required: "Please provide a password",
+        minlength: "Your password must be at least 5 characters long"
+      },
+      email: "Please enter a valid email address"
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+10.Create custom dynamic function for require field validator. 
+=>
